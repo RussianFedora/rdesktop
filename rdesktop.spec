@@ -1,7 +1,7 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
 Version: 1.3.1
-Release: 5
+Release: 6
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 Patch0: %{name}-optflags.patch
@@ -9,6 +9,8 @@ Patch0: %{name}-optflags.patch
 ## CVS backports or stuff that should be in the next version
 Patch100: rdesktop-1.3.1-fi-keymap.patch
 Patch101: rdesktop-1.3.1-fi-warning.patch
+Patch102: rdesktop-1.3.1-xembed.patch
+
 License: GPL
 Group: User Interface/Desktops
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -27,6 +29,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 ## CVS backports
 %patch100 -p0
 %patch101 -p2
+%patch102 -p0
 
 %build
 # Not autoconf, percentconfigure won't work
@@ -49,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Thu Nov 18 2004 Than Ngo <than@redhat.com> 1.3.1-6
+- add cvs patch to make krdc working again
+
 * Thu Jul 08 2004 Warren Togami <wtogami@redhat.com>
 - #127207 Finnish "fi" keymap fix
           "fi" ISO_Level3_Shift warning fix
