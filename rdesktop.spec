@@ -1,7 +1,7 @@
 Summary: show a Windows Terminal Server desktop in X
 Name: rdesktop
-Version: 1.1.0
-Release: 2
+Version: 1.2.0
+Release: 1
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -19,22 +19,43 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %setup -q
 
 %build
-./configure --prefix=%{_prefix} --bindir=%{_bindir} --mandir=%{_mandir} --with-openssl
-make
+# Not autoconf, percentconfigure won't work
+./configure --prefix=%{_prefix} --bindir=%{_bindir} --mandir=%{_mandir} \
+	--with-openssl
+make LDFLAGS="-L/usr/X11R6/%{_lib} -lX11 -lcrypto" %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install PREFIX=$RPM_BUILD_ROOT%{_prefix} BINDIR=$RPM_BUILD_ROOT%{_bindir} MANDIR=$RPM_BUILD_ROOT%{_mandir}
+make install DESTDIR=$RPM_BUILD_ROOT PREFIX=$RPM_BUILD_ROOT%{_prefix} BINDIR=$RPM_BUILD_ROOT%{_bindir} MANDIR=$RPM_BUILD_ROOT%{_mandir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc COPYING
+%doc README COPYING doc/AUTHORS doc/keymapping.txt doc/keynums.png
 %{_bindir}/rdesktop
+%{_datadir}/rdesktop
+%{_mandir}/man1/*
 
 %changelog
+* Mon Feb 10 2003 Alexander Larsson <alexl@redhat.com> 1.2.0-1
+- 1.2.0, new stable release
+- Removed now-upstream ssl patch
+
+* Wed Jan 22 2003 Tim Powers <timp@redhat.com>
+- rebuilt
+
+* Tue Jan  7 2003 Nalin Dahyabhai <nalin@redhat.com> 1.1.0-5
+- work around now-private definition of BN_CTX
+
+* Wed Dec 11 2002 Elliot Lee <sopwith@redhat.com> 1.1.0-4
+- Fix multilib builds by passing LDLIBS on make command line
+- Use _smp_mflags
+
+* Mon Nov 18 2002 Tim Powers <timp@redhat.com>
+- rebuild in current tree
+
 * Fri Jun 21 2002 Tim Powers <timp@redhat.com>
 - automated rebuild
 
