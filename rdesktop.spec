@@ -1,20 +1,15 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
-Version: 1.3.1
-Release: 7
+Version: 1.4.0
+Release: 1
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 Patch0: %{name}-optflags.patch
 
-## CVS backports or stuff that should be in the next version
-Patch100: rdesktop-1.3.1-fi-keymap.patch
-Patch101: rdesktop-1.3.1-fi-warning.patch
-Patch102: rdesktop-1.3.1-xembed.patch
-
 License: GPL
 Group: User Interface/Desktops
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildRequires: openssl-devel, XFree86-devel
+BuildRequires: openssl-devel, xorg-x11-devel
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
@@ -26,15 +21,10 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %setup -q
 %patch0 -p0
 
-## CVS backports
-%patch100 -p0
-%patch101 -p2
-%patch102 -p0
-
 %build
 # Not autoconf, percentconfigure won't work
 ./configure --prefix=%{_prefix} --bindir=%{_bindir} --mandir=%{_mandir} \
-	--with-openssl
+	--with-openssl=%{_prefix}
 make LDFLAGS="-L/usr/X11R6/%{_lib} -lX11 -lcrypto" %{?_smp_mflags}
 
 %install
@@ -52,6 +42,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Mon Mar 21 2005 David Zeuthen <davidz@redhat.com> 1.4.0-1
+- New upstream version; drop some patches that is now upstream
+- Require xorg-x11-devel instead of XFree86-devel for building
+
 * Wed Mar  2 2005 Mark McLoughlin <markmc@redhat.com> 1.3.1-7
 - Rebuild with gcc4
 
