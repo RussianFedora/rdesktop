@@ -1,7 +1,7 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
 Version: 1.3.0
-Release: 2
+Release: 3
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -39,13 +39,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
-* Thu Jan 15 2004 Warren Togami <wtogami@redhat.com> 1.3.0-2
+* Thu Jan 15 2004 Warren Togami <wtogami@redhat.com> 1.3.0-3
 - upgrade to 1.3.0
 - improve summary
 - BuildPrereq -> BuildRequires, the former is deprecated
 - Remove doc files that no longer exist
 - Add missing XFree86-devel
-- There was no -1.  Nothing to see here.  Move along.
+- There was no -1 or -2.  Nothing to see here.  Move along.
 
 * Wed Jun 04 2003 Elliot Lee <sopwith@redhat.com>
 - rebuilt
