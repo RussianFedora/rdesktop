@@ -1,7 +1,7 @@
 Summary: show a Windows Terminal Server desktop in X
 Name: rdesktop
 Version: 1.1.0
-Release: 1
+Release: 2
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -35,6 +35,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/rdesktop
 
 %changelog
+* Fri Jun 21 2002 Tim Powers <timp@redhat.com>
+- automated rebuild
+
 * Wed Jun 12 2002 Alexander Larsson <alexl@redhat.com>
 - Initial build.
 
