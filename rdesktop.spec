@@ -1,13 +1,13 @@
-Summary: show a Windows Terminal Server desktop in X
+Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
-Version: 1.2.0
+Version: 1.3.0
 Release: 2
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
 Group: User Interface/Desktops
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildPrereq: openssl-devel
+BuildRequires: openssl-devel, XFree86-devel
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
@@ -16,7 +16,7 @@ Desktop Protocol (RDP) in order to present the user's NT
 desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
-%setup -q
+%setup -q -n rdesktop
 
 %build
 # Not autoconf, percentconfigure won't work
@@ -33,12 +33,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc README COPYING doc/AUTHORS doc/keymapping.txt doc/keynums.png
+%doc COPYING doc/AUTHORS doc/keymapping.txt
 %{_bindir}/rdesktop
 %{_datadir}/rdesktop
 %{_mandir}/man1/*
 
 %changelog
+* Thu Jan 15 2004 Warren Togami <wtogami@redhat.com> 1.3.0-2
+- upgrade to 1.3.0
+- improve summary
+- BuildPrereq -> BuildRequires, the former is deprecated
+- Remove doc files that no longer exist
+- Add missing XFree86-devel
+- There was no -1.  Nothing to see here.  Move along.
+
 * Wed Jun 04 2003 Elliot Lee <sopwith@redhat.com>
 - rebuilt
 
