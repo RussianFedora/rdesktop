@@ -1,7 +1,7 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
-Version: 1.3.0
-Release: 3
+Version: 1.3.1
+Release: 2
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 License: GPL
@@ -11,12 +11,12 @@ BuildRequires: openssl-devel, XFree86-devel
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
-Windows 2000 Terminal Services, capable of natively speaking Remote
-Desktop Protocol (RDP) in order to present the user's NT
+Windows 2000 & 2003 Terminal Services, capable of natively speaking 
+Remote Desktop Protocol (RDP) in order to present the user's NT
 desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
-%setup -q -n rdesktop
+%setup -q
 
 %build
 # Not autoconf, percentconfigure won't work
@@ -39,6 +39,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
+* Wed Feb 11 2004 Warren Togami <wtogami@redhat.com> 1.3.1-1
+- upgrade to 1.3.1
+
 * Thu Jan 15 2004 Warren Togami <wtogami@redhat.com> 1.3.0-3
 - upgrade to 1.3.0
 - improve summary
