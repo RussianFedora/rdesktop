@@ -1,9 +1,10 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
 Version: 1.3.1
-Release: 2
+Release: 3
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
+Patch0: %{name}-optflags.patch
 License: GPL
 Group: User Interface/Desktops
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
@@ -17,6 +18,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 # Not autoconf, percentconfigure won't work
@@ -33,12 +35,16 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc COPYING doc/AUTHORS doc/keymapping.txt
+%doc COPYING doc/AUTHORS doc/ChangeLog doc/TODO doc/keymapping.txt
 %{_bindir}/rdesktop
 %{_datadir}/rdesktop
 %{_mandir}/man1/*
 
 %changelog
+* Tue Mar 23 2004 Ville Skyttä <ville.skytta at iki.fi> - 1.3.1-3
+- Honor $RPM_OPT_FLAGS.
+- Include ChangeLog and TODO in docs.
+
 * Fri Feb 13 2004 Elliot Lee <sopwith@redhat.com>
 - rebuilt
 
