@@ -1,7 +1,7 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
 Version: 1.3.1
-Release: 3
+Release: 4
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 Patch0: %{name}-optflags.patch
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Tue Jun 15 2004 Elliot Lee <sopwith@redhat.com>
+- rebuilt
+
 * Tue Mar 23 2004 Ville Skyttä <ville.skytta at iki.fi> - 1.3.1-3
 - Honor $RPM_OPT_FLAGS.
 - Include ChangeLog and TODO in docs.
