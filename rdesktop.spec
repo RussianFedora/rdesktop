@@ -1,7 +1,7 @@
 Summary: X client for remote desktop into Windows Terminal Server
 Name: rdesktop
 Version: 1.3.1
-Release: 6
+Release: 7
 URL: http://www.rdesktop.org/
 Source0: %{name}-%{version}.tar.gz
 Patch0: %{name}-optflags.patch
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Wed Mar  2 2005 Mark McLoughlin <markmc@redhat.com> 1.3.1-7
+- Rebuild with gcc4
+
 * Thu Nov 18 2004 Than Ngo <than@redhat.com> 1.3.1-6
 - add cvs patch to make krdc working again
 
