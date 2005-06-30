@@ -1,6 +1,6 @@
 Name:           rdesktop
-Version:        1.4.0
-Release:        2
+Version:        1.4.1
+Release:        1.fc5
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Thu Jun 30 2005 Warren Togami <wtogami@redhat.com> - 1.4.1-1
+- 1.4.1
+
 * Sat Mar 26 2005 Jose Pedro Oliveira <jpo at di.uminho.pt> - 1.4.0-2
 - Use the %%configure macro (rdesktop now has a real configure file).
 - Patch rdesktop-optflags.patch no longer needed.
