@@ -8,7 +8,7 @@ License:        GPL
 URL:            http://www.rdesktop.org/
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  openssl-devel, xorg-x11-devel
+BuildRequires:  openssl-devel, libX11-devel
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
