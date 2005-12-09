@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.4.1
-Release:        3
+Release: 3.1
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Fri Dec 09 2005 Jesse Keating <jkeating@redhat.com>
+- rebuilt
+
 * Thu Nov 10 2005 Tomas Mraz <tmraz@redhat.com> - 1.4.1-3
 - rebuilt against new openssl
 
