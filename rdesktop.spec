@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.4.1
-Release: 3.2
+Release: 3.2.1
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 1.4.1-3.2.1
+- bump again for double-long bug on ppc(64)
+
 * Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 1.4.1-3.2
 - rebuilt for new gcc4.1 snapshot and glibc changes
 
