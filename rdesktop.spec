@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.4.1
-Release: 3.2.2
+Release:        4
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -20,7 +20,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %setup -q
 
 %build
-%configure
+%configure --with-ipv6
 make %{?_smp_mflags}
 
 %install
@@ -38,7 +38,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
-* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - sh: line 0: fg: no job control
+* Thu Aug 31 2006 Behdad Esfahbod <besfahbo@redhat.com> - 1.4.1-4
+- configure --with-ipv6 (bug 198405)
+
+* Wed Jul 12 2006 Jesse Keating <jkeating@redhat.com> - 1.4.1-3.2.2
 - rebuild
 
 * Fri Feb 10 2006 Jesse Keating <jkeating@redhat.com> - 1.4.1-3.2.1
