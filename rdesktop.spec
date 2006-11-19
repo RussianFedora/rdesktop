@@ -1,6 +1,6 @@
 Name:           rdesktop
-Version:        1.4.1
-Release:        4
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Sun Nov 19 2006 Matthias Clasen <mclasen@redhat.com> - 1.5.0-1
+- Update to 1.5.0
+
 * Thu Aug 31 2006 Behdad Esfahbod <besfahbo@redhat.com> - 1.4.1-4
 - configure --with-ipv6 (bug 198405)
 
