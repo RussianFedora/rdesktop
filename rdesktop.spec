@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -10,6 +10,8 @@ Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  openssl-devel, libX11-devel
 
+Patch0: rdesktop-fix-segfault.patch
+
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
 Windows 2000 & 2003 Terminal Services, capable of natively speaking 
@@ -18,6 +20,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
 %setup -q
+%patch0 -p0 -b .fix-segfault
 
 %build
 %configure --with-ipv6
@@ -38,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Thu Apr 26 2007 David Zeuthen <davidz@redhat.com> - 1.5.0-2
+- Fix segfault triggered by X11 update (#238032)
+
 * Sun Nov 19 2006 Matthias Clasen <mclasen@redhat.com> - 1.5.0-1
 - Update to 1.5.0
 
