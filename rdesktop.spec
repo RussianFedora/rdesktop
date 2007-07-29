@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.5.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -28,7 +28,7 @@ make %{?_smp_mflags}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+make install DESTDIR=$RPM_BUILD_ROOT STRIP=/bin/true
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Sat Jul 28 2007 Matthias Clasen <mclasen@redhat.com> - 1.5.0-3
+- Produce useful debuginfo (#249962)
+
 * Thu Apr 26 2007 David Zeuthen <davidz@redhat.com> - 1.5.0-2
 - Fix segfault triggered by X11 update (#238032)
 
