@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Tue Dec  4 2007 Matthias Clasen <mclasen@redhat.com> - 1.5.0-4
+- Rebuild against openssl
+
 * Tue Aug 28 2007 Fedora Release Engineering <rel-eng at fedoraproject dot org> - 1.5.0-4
 - Rebuild for selinux ppc32 issue.
 
