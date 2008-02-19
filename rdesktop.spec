@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.5.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -41,6 +41,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 1.5.0-5
+- Autorebuild for GCC 4.3
+
 * Tue Dec  4 2007 Matthias Clasen <mclasen@redhat.com> - 1.5.0-4
 - Rebuild against openssl
 
