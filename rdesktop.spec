@@ -1,6 +1,6 @@
 Name:           rdesktop
-Version:        1.5.0
-Release:        5%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -10,8 +10,6 @@ Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  openssl-devel, libX11-devel
 
-Patch0: rdesktop-fix-segfault.patch
-
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
 Windows 2000 & 2003 Terminal Services, capable of natively speaking 
@@ -20,7 +18,6 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
 %setup -q
-%patch0 -p0 -b .fix-segfault
 
 %build
 %configure --with-ipv6
@@ -41,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Tue May 13 2008 Soren Sandmann <sandmann@redhat.com> - 1.6.0-1
+Update to 1.6.0
+
 * Mon Feb 18 2008 Fedora Release Engineering <rel-eng@fedoraproject.org> - 1.5.0-5
 - Autorebuild for GCC 4.3
 
