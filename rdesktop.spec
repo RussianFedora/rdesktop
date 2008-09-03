@@ -1,10 +1,10 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
-License:        GPL
+License:        GPLv2+
 URL:            http://www.rdesktop.org/
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Wed Sep  3 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 1.6.0-2
+- fix license tag
+
 * Tue May 13 2008 Soren Sandmann <sandmann@redhat.com> - 1.6.0-1
 Update to 1.6.0
 
