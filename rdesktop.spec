@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -38,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Sat Jan 17 2009 Tomas Mraz <tmraz@redhat.com> - 1.6.0-3
+- rebuild with new openssl
+
 * Wed Sep  3 2008 Tom "spot" Callaway <tcallawa@redhat.com> - 1.6.0-2
 - fix license tag
 
