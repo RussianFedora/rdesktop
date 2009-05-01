@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -8,7 +8,8 @@ License:        GPLv2+
 URL:            http://www.rdesktop.org/
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  openssl-devel, libX11-devel
+BuildRequires:  openssl-devel, libX11-devel, pcsc-lite-devel
+Requires:	pcsc-lite
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
@@ -20,7 +21,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %setup -q
 
 %build
-%configure --with-ipv6
+%configure --with-ipv6 --enable-smartcard
 make %{?_smp_mflags}
 
 %install
@@ -38,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Fri May 1 2009 Soren Sandmann <ssp@redhat.com> - 1.6.0-5
+- Enable SmartCard support
+
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
