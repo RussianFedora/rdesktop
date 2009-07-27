@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.0-6
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Fri May 1 2009 Soren Sandmann <ssp@redhat.com> - 1.6.0-5
 - Enable SmartCard support
 
