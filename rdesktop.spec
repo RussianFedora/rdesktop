@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -9,7 +9,6 @@ URL:            http://www.rdesktop.org/
 Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  openssl-devel, libX11-devel, pcsc-lite-devel
-Requires:	pcsc-lite
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
@@ -39,6 +38,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Fri Aug 20 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-8
+- drop hard dependency on pcsc-lite (bug #527712)
+
 * Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 1.6.0-7
 - rebuilt with new openssl
 
