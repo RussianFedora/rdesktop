@@ -1,6 +1,6 @@
 diff -up rdesktop-1.6.0/scard.c.pcsc rdesktop-1.6.0/scard.c
 --- rdesktop-1.6.0/scard.c.pcsc	2008-02-14 12:37:18.000000000 +0100
-+++ rdesktop-1.6.0/scard.c	2010-11-17 18:10:13.000000000 +0100
++++ rdesktop-1.6.0/scard.c	2010-11-17 22:34:15.238453021 +0100
 @@ -40,7 +40,6 @@
  /* variable segment */
  
@@ -22,6 +22,15 @@ diff -up rdesktop-1.6.0/scard.c.pcsc rdesktop-1.6.0/scard.c
  
  	DEBUG_SCARD(("SCARD: SCardLocateCardsByATR(context: 0x%08x, atrs: %d, readers: %d)\n",
  		     (unsigned) hContext, (int) atrMaskCount, (int) readerCount));
+@@ -1323,7 +1322,7 @@ TS_SCardLocateCardsByATR(STREAM in, STRE
+ 				if (equal)
+ 				{
+ 					rsCur->dwEventState |= 0x00000040;	/* SCARD_STATE_ATRMATCH 0x00000040 */
+-					memcpy(ResArray + j, rsCur, sizeof(SCARD_READERSTATE_A));
++					memcpy(ResArray + j, rsCur, sizeof(SCARD_READERSTATE));
+ 					DEBUG_SCARD(("SCARD:    \"%s\"\n",
+ 						     rsCur->szReader ? rsCur->szReader : "NULL"));
+ 					DEBUG_SCARD(("SCARD:        user: 0x%08x, state: 0x%08x, event: 0x%08x\n", (unsigned) rsCur->pvUserData, (unsigned) rsCur->dwCurrentState, (unsigned) rsCur->dwEventState));
 @@ -1344,7 +1343,7 @@ TS_SCardLocateCardsByATR(STREAM in, STRE
  		rsCur->cbAtr = swap32(rsCur->cbAtr);
  
@@ -33,7 +42,7 @@ diff -up rdesktop-1.6.0/scard.c.pcsc rdesktop-1.6.0/scard.c
  	outForceAlignment(out, 8);
 diff -up rdesktop-1.6.0/scard.h.pcsc rdesktop-1.6.0/scard.h
 --- rdesktop-1.6.0/scard.h.pcsc	2007-10-30 14:09:37.000000000 +0100
-+++ rdesktop-1.6.0/scard.h	2010-11-17 17:44:19.000000000 +0100
++++ rdesktop-1.6.0/scard.h	2010-11-17 22:32:40.394453665 +0100
 @@ -51,8 +51,8 @@ typedef SCARDHANDLE MYPCSC_SCARDHANDLE;
  typedef uint32_t SERVER_SCARDCONTEXT;
  typedef uint32_t SERVER_SCARDHANDLE;
