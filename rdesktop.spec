@@ -6,7 +6,8 @@ Summary:        X client for remote desktop into Windows Terminal Server
 Group:          User Interface/Desktops
 License:        GPLv2+
 URL:            http://www.rdesktop.org/
-Source0:        %{name}-%{version}.tar.gz
+Source0:        http://downloads.sourceforge.net/rdesktop/%{name}-%{version}.tar.gz
+Patch0:         %{name}-pcsc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  openssl-devel, libX11-devel, pcsc-lite-devel
 
@@ -18,6 +19,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
 %setup -q
+%patch0 -p1 -b .pcsc
 
 %build
 %configure --with-ipv6 --enable-smartcard
@@ -40,6 +42,8 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Fri Aug 20 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-8
 - drop hard dependency on pcsc-lite (bug #527712)
+- fix build against current pcsc-lite
+- add a proper source URL
 
 * Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 1.6.0-7
 - rebuilt with new openssl
