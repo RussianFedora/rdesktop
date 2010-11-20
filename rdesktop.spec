@@ -9,7 +9,10 @@ URL:            http://www.rdesktop.org/
 Source0:        http://downloads.sourceforge.net/rdesktop/%{name}-%{version}.tar.gz
 Patch0:         %{name}-pcsc.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires:  openssl-devel, libX11-devel, pcsc-lite-devel
+BuildRequires:  libao-devel
+BuildRequires:  libX11-devel
+BuildRequires:  openssl-devel
+BuildRequires:  pcsc-lite-devel
 
 %description
 rdesktop is an open source client for Windows NT Terminal Server and
@@ -22,7 +25,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %patch0 -p1 -b .pcsc
 
 %build
-%configure --with-ipv6 --enable-smartcard
+%configure --with-ipv6 --enable-smartcard --with-sound=libao
 make %{?_smp_mflags}
 
 %install
@@ -44,6 +47,7 @@ rm -rf $RPM_BUILD_ROOT
 - drop hard dependency on pcsc-lite (bug #527712)
 - fix build against current pcsc-lite
 - add a proper source URL
+- add libao support (supports ALSA and PulseAudio)
 
 * Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 1.6.0-7
 - rebuilt with new openssl
