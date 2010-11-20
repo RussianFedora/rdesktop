@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -43,11 +43,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Sat Nov 20 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-9
+- add libao support (supports ALSA and PulseAudio, should fix bugs
+  #503431 and #577878)
+
 * Fri Aug 20 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-8
 - drop hard dependency on pcsc-lite (bug #527712)
 - fix build against current pcsc-lite
 - add a proper source URL
-- add libao support (supports ALSA and PulseAudio)
 
 * Fri Aug 21 2009 Tomas Mraz <tmraz@redhat.com> - 1.6.0-7
 - rebuilt with new openssl
