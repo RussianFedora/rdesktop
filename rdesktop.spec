@@ -1,6 +1,6 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        9%{?dist}
+Release:        10%{?dist}
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
@@ -8,6 +8,7 @@ License:        GPLv2+
 URL:            http://www.rdesktop.org/
 Source0:        http://downloads.sourceforge.net/rdesktop/%{name}-%{version}.tar.gz
 Patch0:         %{name}-pcsc.patch
+Patch1:         %{name}-libao.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  libao-devel
 BuildRequires:  libX11-devel
@@ -23,6 +24,7 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 %prep
 %setup -q
 %patch0 -p1 -b .pcsc
+%patch1 -p1 -b .ao
 
 %build
 %configure --with-ipv6 --enable-smartcard --with-sound=libao
@@ -43,6 +45,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Thu Dec 02 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-10
+- patch libao output driver to fix segfault (bugs #657172, #657813,
+  #658018, #658799, #659072)
+
 * Sat Nov 20 2010 Dominik Mierzejewski <rpm@greysector.net> - 1.6.0-9
 - add libao support (supports ALSA and PulseAudio, should fix bugs
   #503431 and #577878)
