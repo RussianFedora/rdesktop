@@ -1,12 +1,18 @@
 Name:           rdesktop
 Version:        1.6.0
-Release:        4%{?dist}
+Release:        7%{?dist}.1
 Summary:        X client for remote desktop into Windows Terminal Server
 
 Group:          User Interface/Desktops
 License:        GPLv2+
 URL:            http://www.rdesktop.org/
 Source0:        %{name}-%{version}.tar.gz
+# ALT Linux patches
+Patch0: %name-1.5.0-rawkeyboard_nofreespace_kbswitch.tar.bz2
+Patch1: rdesktop-cvs-alt-raw-v2.patch
+Patch2: rdesktop-alt-man.patch
+Patch3: rdesktop.long.names.on.redirect.drives.patch
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:  openssl-devel, libX11-devel
 
@@ -18,6 +24,9 @@ desktop. Unlike Citrix ICA, no server extensions are required.
 
 %prep
 %setup -q
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 %configure --with-ipv6
@@ -38,6 +47,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*
 
 %changelog
+* Tue Jan 26 2010 Arkady L. Shane <ashejn@yandex-team.ru> - 1.6.0-7.1
+- apply all ALT Linux patches
+
 * Wed Feb 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.6.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
